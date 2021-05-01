@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStatistics : MonoBehaviour
 {
@@ -14,7 +16,6 @@ public class PlayerStatistics : MonoBehaviour
     public const int BASE_TAX_PERCENTAGE = 0;
     public const float BASE_PASSIVE_GEN = 2.0f;
 
-
     // tracked values
     public int money = BASE_MONEY;
     public int clickPower = BASE_CLICK_POWER;
@@ -27,6 +28,8 @@ public class PlayerStatistics : MonoBehaviour
 
     // List of Soups
     public Dictionary<Soup, int> soups;
+    int totalSoup = 0;
+
     //For editing only
     public List<Soup> collectedSoupList;
 
@@ -35,6 +38,10 @@ public class PlayerStatistics : MonoBehaviour
 
     //RNG
     System.Random rng;
+
+    // Scroll bar parent
+    public GameObject content;
+    public GameObject soupMenuPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -70,15 +77,54 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     public void AddSoup(Soup soup, int amount) {
+        totalSoup += amount;
+        // Update scroll menu
+        AddSoupToMenu(soup, amount);
+
         if (soups.ContainsKey(soup)) {
+            print("found soup");
             soups[soup] += amount;
         } else {
             soups[soup] = amount;
         }
+
         for (int i = 0; i < amount; i++) {
             collectedSoupList.Add(soup);
         }
         RecalculateSoup();
+    }
+
+    private void AddSoupToMenu (Soup soup, int amount) {
+        if (soups.ContainsKey(soup)) {
+            // Find gameobject (or rather the transform of object)
+            Transform tab = content.transform.Find(soup.soupName);
+
+            // Set Soup values
+            tab.GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Number: " + (soups[soup] + amount);
+
+            // Update all percents
+            foreach (Transform tab1 in content.transform) {
+                print("ayo");
+                string number = tab.GetChild(2).gameObject.GetComponent<TMP_Text>().text;
+                int amount1 = int.Parse(number.Substring(number.IndexOf(" ") + 1));
+                tab.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount1 / totalSoup)) + "%";
+            }
+
+        } else {
+            // Instantiate prefab
+            GameObject newTab = Instantiate(soupMenuPrefab);
+
+            // Set Soup values
+            newTab.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = soup.sprite;
+            newTab.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = "Type: " + soup.soupName;
+            newTab.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Number: " + amount;
+            newTab.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount / totalSoup)) + "%";
+
+            // Set parent, game object name, and scale
+            newTab.name = soup.soupName;
+            newTab.transform.SetParent(content.transform);
+            newTab.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     public void RecalculateSoup() {
@@ -93,8 +139,8 @@ public class PlayerStatistics : MonoBehaviour
         }
 
         foreach (Soup soup in soups.Keys) {
-            print(Math.Pow(1 + soup.clickMultiplicative, soups[soup]));
-            print(cp);
+            //print(Math.Pow(1 + soup.clickMultiplicative, soups[soup]));
+            //print(cp);
             cp *= Math.Pow(1 + soup.clickMultiplicative, soups[soup]);
             pp *= Math.Pow(1 + soup.passiveMultiplicative, soups[soup]);
             tp *= Math.Pow(1 + soup.taxAmountMultiplicative, soups[soup]);
