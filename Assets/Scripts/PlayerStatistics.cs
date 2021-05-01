@@ -27,12 +27,15 @@ public class PlayerStatistics : MonoBehaviour
     // List of Soups
     public Dictionary<string, int> soups;
 
+    public Soup[] allSoups;
+
     // Start is called before the first frame update
     void Start()
     {
         if (!instance) {
             instance = this;
             soups = new Dictionary<string, int>();
+            LoadAllSoup();
         } else {
             Destroy(this.gameObject);
         }
@@ -61,4 +64,19 @@ public class PlayerStatistics : MonoBehaviour
             soups[soup] = amount;
         }
     }
+
+    // Load all soup scriptable objs
+    private void LoadAllSoup() {
+        allSoups = Resources.LoadAll<Soup>("Soups");
+
+        //Debug - seems to work for now
+        /*
+        foreach (Soup soup in allSoups) {
+            clickPower += soup.clickAdditive;
+            passivePower += soup.passiveAdditive;
+        }
+        */
+    }
 }
+
+
