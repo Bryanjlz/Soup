@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerStatistics : MonoBehaviour
 {
     // Singleton
     public static PlayerStatistics instance;
 
+    [Header("Connected Text")]
+    // Connected Displays
+    public TextMeshProUGUI CPText;
+    public TextMeshProUGUI PPText;
+    public TextMeshProUGUI GoldText;
+
     // constants 
+    [Header("Constants")]
     public const int BASE_MONEY = 0;
     public const int BASE_CLICK_POWER = 0;
     public const int BASE_PASSIVE_POWER = 0;
@@ -16,15 +24,18 @@ public class PlayerStatistics : MonoBehaviour
 
 
     // tracked values
+    [Header("Tracked Values")]
     public int money = BASE_MONEY;
     public int clickPower = BASE_CLICK_POWER;
     public int passivePower = BASE_PASSIVE_POWER;
     public float taxPercentage = BASE_TAX_PERCENTAGE;
 
     // times
+    [Header("Times")]
     public float pGenTime = BASE_PASSIVE_GEN;
     public float pGenTimer = 0f;
 
+    [Header("Lists (open if you dare)")]
     // List of Soups
     public Dictionary<Soup, int> soups;
     //For editing only
@@ -59,6 +70,8 @@ public class PlayerStatistics : MonoBehaviour
             money += passivePower;
             pGenTimer = 0f;
         }
+
+        GoldText.text = String.Format("Gold: {0}", money);
     }
 
     public void Click() {
@@ -79,6 +92,7 @@ public class PlayerStatistics : MonoBehaviour
             collectedSoupList.Add(soup);
         }
         RecalculateSoup();
+        SetStatDisplay();
     }
 
     public void RecalculateSoup() {
@@ -123,6 +137,11 @@ public class PlayerStatistics : MonoBehaviour
             passivePower += soup.passiveAdditive;
         }
         */
+    }
+
+    public void SetStatDisplay() {
+        CPText.text = String.Format("CP: {0}", clickPower);
+        PPText.text = String.Format("PP: {0}", passivePower);
     }
 }
 
