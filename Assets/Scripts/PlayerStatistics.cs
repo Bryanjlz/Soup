@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerStatistics : MonoBehaviour
 {
@@ -23,13 +24,19 @@ public class PlayerStatistics : MonoBehaviour
     public float pGenTime = BASE_PASSIVE_GEN;
     public float pGenTimer = 0f;
 
+    // List of Soups
+    public Dictionary<string, int> soups;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (!instance)
-        {
+        if (!instance) {
             instance = this;
+            soups = new Dictionary<string, int>();
+        } else {
+            Destroy(this.gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -42,7 +49,16 @@ public class PlayerStatistics : MonoBehaviour
             pGenTimer = 0f;
         }
     }
+
     public void Click() {
         money += clickPower;
+    }
+
+    public void AddSoup(string soup, int amount) {
+        if (soups.ContainsKey(soup)) {
+            soups[soup] += amount;
+        } else {
+            soups[soup] = amount;
+        }
     }
 }
