@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5067015bcea1243429f1c6e35219919f, type: 3}
   m_Name: Bean With Bacon Soup
   m_EditorClassIdentifier: 
-  soupName: 
+  soupName: Bean With Bacon Soup
+  description: 
   rarity: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 0ddb7ae4ab6668d47bf01c654324a5ef, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
   taxAmountAdditive: 0

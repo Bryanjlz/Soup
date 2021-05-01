@@ -241,6 +241,8 @@ MonoBehaviour:
   taxPercentage: 0
   pGenTime: 2
   pGenTimer: 0
+  collectedSoupList: []
+  allSoups: []
 --- !u!4 &640533099
 Transform:
   m_ObjectHideFlags: 0
@@ -547,6 +549,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 898066722}
     m_Modifications:
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 640533098}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GainRandomSoup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerStatistics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793645553876335052, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5793645553975478148, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
       propertyPath: m_Name
       value: Small Menu
