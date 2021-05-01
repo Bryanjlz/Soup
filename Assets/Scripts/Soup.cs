@@ -5,16 +5,17 @@ using UnityEngine;
 public class Soup: ScriptableObject
 {
     public string soupName;
+    public string description;
     public int rarity;
     public Sprite sprite;
 
-    public int clickAdditive;
-    public int passiveAdditive;
-    public int taxAmountAdditive;
+    public double clickAdditive;
+    public double passiveAdditive;
+    public double taxAmountAdditive;
 
-    public int clickMultiplicative;
-    public int passiveMultiplicative;
-    public int taxAmountMultiplicative;
+    public double clickMultiplicative;
+    public double passiveMultiplicative;
+    public double taxAmountMultiplicative;
 
     // OPTIONAL!!!
     public GameObject associatedPrefab;
