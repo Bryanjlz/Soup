@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5067015bcea1243429f1c6e35219919f, type: 3}
   m_Name: Celery Soup
   m_EditorClassIdentifier: 
-  soupName: 
+  soupName: Celery Soup
+  description: 
   rarity: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9ef3de0c08bad424bae3d4325a8162b1, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
   taxAmountAdditive: 0

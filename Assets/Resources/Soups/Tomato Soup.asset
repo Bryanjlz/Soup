@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5067015bcea1243429f1c6e35219919f, type: 3}
   m_Name: Tomato Soup
   m_EditorClassIdentifier: 
-  soupName: 
+  soupName: Tomato Soup
+  description: 
   rarity: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bf1b4061387396546b454214ae79ee34, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
   taxAmountAdditive: 0

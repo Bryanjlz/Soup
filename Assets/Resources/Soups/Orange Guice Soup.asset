@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5067015bcea1243429f1c6e35219919f, type: 3}
   m_Name: Orange Guice Soup
   m_EditorClassIdentifier: 
-  soupName: 
+  soupName: Orange Guice Soup
+  description: 
   rarity: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bcff495c821296b44b1bfe1258e9d47a, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
   taxAmountAdditive: 0
