@@ -456,7 +456,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 415}
+  m_ReferenceResolution: {x: 800, y: 450}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -944,6 +944,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8711032255819933973, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8711032255980830696, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_Name
       value: Soup List
@@ -982,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8711032255980830697, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -124.5
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 8711032255980830697, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1050,7 +1054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8711032257328723012, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 290.5
+      value: 315
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
