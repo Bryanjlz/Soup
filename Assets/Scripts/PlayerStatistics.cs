@@ -27,10 +27,10 @@ public class PlayerStatistics : MonoBehaviour
 
     // tracked values
     [Header("Tracked Values")]
-    public int money = BASE_MONEY;
-    public int clickPower = BASE_CLICK_POWER;
+    public double money = BASE_MONEY;
+    public double clickPower = BASE_CLICK_POWER;
     public double clickMultiplier = 1f;
-    public int passivePower = BASE_PASSIVE_POWER;
+    public double passivePower = BASE_PASSIVE_POWER;
     public double passiveMultiplier = 1f;
     public float taxPercentage = BASE_TAX_PERCENTAGE;
 
@@ -87,7 +87,7 @@ public class PlayerStatistics : MonoBehaviour
             pGenTimer = 0f;
         }
 
-        GoldText.text = String.Format("Gold: {0}", money);
+        GoldText.text = String.Format("Gold: {0}", BigNumberFormat(money, 1000000000));
     }
 
     public void Click() {
@@ -237,9 +237,9 @@ public class PlayerStatistics : MonoBehaviour
             cp = 1;
         }
 
-        clickPower = (int) cp;
-        passivePower = (int) pp;
-        taxPercentage = (int) tp;
+        clickPower = cp;
+        passivePower = pp;
+        taxPercentage = (float) tp;
     }
 
     public void GainRandomSoup() {
@@ -263,24 +263,31 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     public void SetStatDisplay() {
-        CPText.text = String.Format("CP: {0}", Math.Round((double)clickPower));
-        PPText.text = String.Format("PP: {0}", Math.Round((double)passivePower));
-        CMText.text = String.Format("CM: {0}x", Math.Round(100 * clickMultiplier)/100f);
-        PMText.text = String.Format("PM: {0}x", Math.Round(100 * passiveMultiplier)/100f);
+        CPText.text = String.Format("CP: {0} Gold/Click", BigNumberFormat(clickPower, 1000000000.0));
+        PPText.text = String.Format("PP: {0} Gold/s", BigNumberFormat(passivePower, 1000000000.0));
+        CMText.text = String.Format("CM: {0}x", BigNumberFormat((100 * clickMultiplier)/100f, 10000));
+        PMText.text = String.Format("PM: {0}x", BigNumberFormat((100 * passiveMultiplier)/100f, 100000));
+    }
+
+    private string BigNumberFormat(double bigNumber, double limit) {
+        if (bigNumber < limit) {
+            return bigNumber.ToString("F0");
+        }
+        return bigNumber.ToString("e2");
     }
 
     public void Tax() {
-        int taxes = (int) (taxPercentage * money);
+        double taxes = taxPercentage * money;
         LoseMoney(taxes);
         SetStatDisplay();
     }
 
-    public void GainMoney (int gain) {
+    public void GainMoney (double gain) {
         money += gain;
         SetStatDisplay();
     }
 
-    public void LoseMoney (int loss) {
+    public void LoseMoney (double loss) {
         money -= loss;
         if (money < 0) {
             money = 0;
