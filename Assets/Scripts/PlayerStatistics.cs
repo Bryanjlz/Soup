@@ -67,24 +67,11 @@ public class PlayerStatistics : MonoBehaviour
     int xDest = 0;
     int yDest = 0;
     float speed = 3f;
-
-    // Drunk Mouse stuff I don't understand
-    [System.Runtime.InteropServices.DllImport("user32.dll")]
-    public static extern bool SetCursorPos(int X, int Y);
-    [System.Runtime.InteropServices.DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool GetCursorPos(out MousePosition lpMousePosition);
-
     public int xdmp;
     public int ydmp;
-    [StructLayout(LayoutKind.Sequential)]
-    public struct MousePosition {
-        public int x;
-        public int y;
-    }
 
     // Camera
-    public GameObject theCam;
+    public GameObject canvas;
 
     // Auto Confirm
     public bool autoConfirm = false;
@@ -110,6 +97,7 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        
         if (drunkness < 0) {
             drunkness = 0;
         }
@@ -119,9 +107,10 @@ public class PlayerStatistics : MonoBehaviour
             if (speed > 10f) {
                 speed = 10f;
             }
-            MousePosition mp;
-            GetCursorPos(out mp);
             if ((xDest <= 5 || yDest <= 5) && drunkness != 0) {
+                if (Vector2.Distance(canvas.transform.position, new Vector2(0, 0)) > 100) {
+                    canvas.transform.position = new Vector3(0, 0, 0);
+                }
                 xDest = rng.Next(drunkness);
                 yDest = rng.Next(drunkness);
 
@@ -142,11 +131,9 @@ public class PlayerStatistics : MonoBehaviour
             }
             xDest -= Math.Abs(xdmp);
             yDest -= Math.Abs(ydmp);
-            SetCursorPos(mp.x + xdmp, mp.y + ydmp);
+            canvas.transform.position += new Vector3(xdmp, ydmp, 0);
         }
-        xDest -= Math.Abs(xdmp);
-        yDest -= Math.Abs(ydmp);
-        theCam.transform.position = new Vector2(mp.x + xdmp, mp.y + ydmp);
+        
     }
 
     // Update is called once per frame
