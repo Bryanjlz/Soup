@@ -78,11 +78,10 @@ public class PlayerStatistics : MonoBehaviour
 
     // Drunk stuff
     public int drunkness = 0;
-    bool isMoving = false;
     int xDest = 0;
     int yDest = 0;
-    float speed = 1f;
-    
+    float speed = 3f;
+
     public Ascension ascension;
 
     // Start is called before the first frame update
@@ -101,14 +100,23 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        speed = drunkness / 5f;
+        if (speed > 10f) {
+            speed = 10f;
+        }
         MousePosition mp;
         GetCursorPos(out mp);
-        if (xDest <= 5 && yDest <= 5) {
+        if ((xDest <= 5 || yDest <= 5) && drunkness != 0) {
             xDest = rng.Next(drunkness);
             yDest = rng.Next(drunkness);
 
             xdmp = (int)(xDest / speed);
             ydmp = (int)(yDest / speed);
+
+            if (xdmp == 0 && ydmp == 0 && drunkness != 0) {
+                xdmp = 1;
+                ydmp = 1;
+            }
 
             if (rng.Next(2) == 0) {
                 xdmp *= -1;
@@ -117,8 +125,8 @@ public class PlayerStatistics : MonoBehaviour
                 ydmp *= -1;
             }
         }
-        xDest -= (Math.Abs(xdmp));
-        yDest -= (Math.Abs(ydmp));
+        xDest -= Math.Abs(xdmp);
+        yDest -= Math.Abs(ydmp);
         SetCursorPos(mp.x + xdmp, mp.y + ydmp);
     }
 
@@ -177,6 +185,18 @@ public class PlayerStatistics : MonoBehaviour
 
         if (soup.associatedPrefab != null) {
             Instantiate(soup.associatedPrefab);
+        }
+
+        if (soup.soupName.Contains("Beer")) {
+            drunkness += 1;
+        }
+
+        if (soup.soupName.Contains("Scotch")) {
+            drunkness += 5;
+        }
+
+        if (soup.soupName.Contains("Vodka")) {
+            drunkness += 10;
         }
 
         RecalculateSoup();
