@@ -20,6 +20,6 @@ MonoBehaviour:
   passiveAdditive: 0
   taxAmountAdditive: 0
   clickMultiplicative: 0
-  passiveMultiplicative: 0
+  passiveMultiplicative: 0.05
   taxAmountMultiplicative: 0
   associatedPrefab: {fileID: 0}

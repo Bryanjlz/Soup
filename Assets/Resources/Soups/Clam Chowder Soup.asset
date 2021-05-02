@@ -16,8 +16,8 @@ MonoBehaviour:
   description: 
   rarity: 1
   sprite: {fileID: 21300000, guid: 51e15db823c2afc488de611358817910, type: 3}
-  clickAdditive: 1
-  passiveAdditive: 1
+  clickAdditive: 0
+  passiveAdditive: 5
   taxAmountAdditive: 0
   clickMultiplicative: 0
   passiveMultiplicative: 0

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Celery Soup
   m_EditorClassIdentifier: 
   soupName: Celery Soup
-  description: 
+  description: Clicks generate 20 more gold but clicks generate 20% less gold
   rarity: 2
   sprite: {fileID: 21300000, guid: 9ef3de0c08bad424bae3d4325a8162b1, type: 3}
-  clickAdditive: 0
+  clickAdditive: 20
   passiveAdditive: 0
   taxAmountAdditive: 0
-  clickMultiplicative: 0
+  clickMultiplicative: -0.2
   passiveMultiplicative: 0
   taxAmountMultiplicative: 0
   associatedPrefab: {fileID: 0}
