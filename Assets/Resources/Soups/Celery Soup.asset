@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Clicks generate 35 more gold but clicks generate 20% less gold
   rarity: 2
   sprite: {fileID: 21300000, guid: 9ef3de0c08bad424bae3d4325a8162b1, type: 3}
-  clickAdditive: 35
+  clickAdditive: 20
   passiveAdditive: 0
   taxAmountAdditive: 0
   clickMultiplicative: -0.2
