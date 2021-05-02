@@ -199,6 +199,17 @@ public class PlayerStatistics : MonoBehaviour
         CPText.text = String.Format("CP: {0}", clickPower);
         PPText.text = String.Format("PP: {0}", passivePower);
     }
+
+    
+    public void Tax() {
+        int taxes = (int) (taxPercentage * money);
+        int newVal = money - taxes;
+        if (newVal <= 0) {
+            newVal = 0;
+        }
+        money = newVal;
+        SetStatDisplay();
+    }
 }
 
 
