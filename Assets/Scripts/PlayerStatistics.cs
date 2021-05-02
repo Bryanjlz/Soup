@@ -169,7 +169,7 @@ public class PlayerStatistics : MonoBehaviour
             d += "Passively generates " + soup.passiveAdditive + " gold. \n";
         }
         if (soup.passiveMultiplicative > 0) {
-            d += "Passively generates " + soup.passiveAdditive + "% gold. \n";
+            d += "Passively generates " + soup.passiveMultiplicative + "% more gold. \n";
         }
         if (soup.taxAmountAdditive > 0) {
             d += "You are now taxed " + soup.taxAmountAdditive + " more gold. \n";
