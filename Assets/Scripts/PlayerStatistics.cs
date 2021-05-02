@@ -109,6 +109,10 @@ public class PlayerStatistics : MonoBehaviour
             soups[soup] = amount;
         }
 
+        if (soup.associatedPrefab != null) {
+            Instantiate(soup.associatedPrefab);
+        }
+
         RecalculateSoup();
         SetStatDisplay();
     }

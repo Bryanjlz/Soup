@@ -333,11 +333,14 @@ MonoBehaviour:
   taxPercentage: 0.01
   pGenTime: 2
   pGenTimer: 0
-  collectedSoupList: []
   allSoups: []
   content: {fileID: 8711032257711144081}
   soupMenuPrefab: {fileID: 3477782160428888210, guid: 5a373e9b6f284d143b7fc8fd251200d5, type: 3}
   starPrefab: {fileID: 6383753958566600913, guid: cca56dbe654076d4ea5d1fc797fc9959, type: 3}
+  ascension:
+    ascensions: 0
+    soupsSacrificed: 0
+    ascensionBonus: 1
 --- !u!4 &640533099
 Transform:
   m_ObjectHideFlags: 0
