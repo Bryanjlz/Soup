@@ -30,9 +30,13 @@ public class Taxation: MonoBehaviour {
         taxTimer -= Time.deltaTime;
 
         if (taxTimer <= 0) {
-            GameObject go = Instantiate(qtePopup, canvas.transform);
-            go.GetComponent<QuickTimeEvent>().random = random;
+            Tax();
             taxTimer = TAX_TIMER;
         }
+    }
+
+    public void Tax() {
+        GameObject go = Instantiate(qtePopup, canvas.transform);
+        go.GetComponent<QuickTimeEvent>().random = random;
     }
 }

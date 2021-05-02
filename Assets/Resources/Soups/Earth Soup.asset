@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Earth Soup
   m_EditorClassIdentifier: 
   soupName: Earth Soup
-  description: Doubles your money when bought
+  description: clicks generate 30% more gold, passively generate 30% more gold and
+    doubles your money when bought
   rarity: 4
   sprite: {fileID: 21300000, guid: cb4523d827b83bb4198798b3a59b60ea, type: 3}
   clickAdditive: 0

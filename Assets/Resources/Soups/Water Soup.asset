@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Water Soup
   m_EditorClassIdentifier: 
   soupName: Water Soup
-  description: Evade Taxes
+  description: clicks generate 30% more gold, passively generate 30% more gold and
+    Evade Taxes for a while
   rarity: 4
   sprite: {fileID: 21300000, guid: 8270ea7ace4b0c749b4570b3affec28c, type: 3}
   clickAdditive: 0
