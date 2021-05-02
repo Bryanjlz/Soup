@@ -19,7 +19,22 @@ public class Gacha : MonoBehaviour
     private void Start() {
         gachaName = "Low";
         LoadGacha();
-        ChangeGacha(gachaName);
+        
+        // Lazy code
+        ChangeGacha("Low");
+        
+        low.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
+        ChangeGacha("Medium");
+        med.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
+        ChangeGacha("High");
+        print(AutoDescription(curGacha));
+        high.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
+
+        ChangeGacha("Low");
+    }
+
+    private void LoadGacha() {
+        gachaRates = Resources.LoadAll<GachaRate>("Gacha Rates");
     }
 
     private void Update() {
@@ -39,14 +54,19 @@ public class Gacha : MonoBehaviour
         med.interactable = true;
         high.interactable = true;
 
-        // Disable new gacha button
+        Button curButton;
+
+        // Find Button
         if (gachaName.Equals("Low")) {
-            low.interactable = false;
+            curButton = low;
         } else if (gachaName.Equals("Medium")) {
-            med.interactable = false;
+            curButton = med;
         } else {
-            high.interactable = false;
+            curButton = high;
         }
+
+        // Set button inactive
+        curButton.interactable = false;
 
         // Find the gacha
         foreach (GachaRate gacha in gachaRates) {
@@ -55,8 +75,24 @@ public class Gacha : MonoBehaviour
             }
         }
 
+
         // Set cost text
         cost.text = "One roll costs:\n" + curGacha.cost + " Gold";
+
+        
+    }
+
+    public string AutoDescription (GachaRate gachaRate) {
+        string res = "";
+        for (int i = 0; i < gachaRate.rates.Length; i++) {
+            int star = i;
+            if (i == 5) {
+                star = 6;
+            }
+            res += (star + 1) + " Star: " + gachaRate.rates[i] + "% \n ";
+        }
+        res = res.Substring(0, res.LastIndexOf("\n"));
+        return res;
     }
 
 
@@ -96,10 +132,6 @@ public class Gacha : MonoBehaviour
             }
         }
         return result;
-    }
-
-    private void LoadGacha () {
-        gachaRates = Resources.LoadAll<GachaRate>("Gacha Rates");
     }
 
 }

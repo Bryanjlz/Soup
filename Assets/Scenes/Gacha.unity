@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 106687633}
   - component: {fileID: 106687632}
   - component: {fileID: 106687634}
+  - component: {fileID: 106687636}
+  - component: {fileID: 106687635}
   m_Layer: 5
   m_Name: High
   m_TagString: Untagged
@@ -389,6 +391,65 @@ MonoBehaviour:
           m_StringArgument: High
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &106687635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106687630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b590072af9e651b45b62732241883410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  button: {fileID: 0}
+--- !u!114 &106687636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106687630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 106687635}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 106687635}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: HideTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &287875305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1467,8 @@ GameObject:
   - component: {fileID: 853376412}
   - component: {fileID: 853376411}
   - component: {fileID: 853376413}
+  - component: {fileID: 853376414}
+  - component: {fileID: 853376415}
   m_Layer: 5
   m_Name: Low
   m_TagString: Untagged
@@ -1526,6 +1589,65 @@ MonoBehaviour:
           m_StringArgument: Low
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &853376414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853376409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b590072af9e651b45b62732241883410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  button: {fileID: 0}
+--- !u!114 &853376415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853376409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 853376414}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 853376414}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: HideTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &1176271821 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8122993157313012230, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
@@ -1975,6 +2097,8 @@ GameObject:
   - component: {fileID: 1910496790}
   - component: {fileID: 1910496789}
   - component: {fileID: 1910496791}
+  - component: {fileID: 1910496793}
+  - component: {fileID: 1910496792}
   m_Layer: 5
   m_Name: Medium
   m_TagString: Untagged
@@ -2095,6 +2219,65 @@ MonoBehaviour:
           m_StringArgument: Medium
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1910496792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910496787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b590072af9e651b45b62732241883410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  button: {fileID: 0}
+--- !u!114 &1910496793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910496787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1910496792}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: ShowTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1910496792}
+          m_TargetAssemblyTypeName: CanMenuScript, Assembly-CSharp
+          m_MethodName: HideTooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1913026895
 GameObject:
   m_ObjectHideFlags: 0

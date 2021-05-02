@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &230810877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5170755277161405673, guid: ddd0b18a602d0c84cab0e6927f1b46fb, type: 3}
+  m_PrefabInstance: {fileID: 7058544733231759735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336412568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8122993157313012231, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
@@ -275,8 +286,8 @@ MonoBehaviour:
   CPText: {fileID: 409893979}
   PPText: {fileID: 1390147323}
   GoldText: {fileID: 1687552844}
-  CMText: {fileID: 0}
-  PMText: {fileID: 0}
+  CMText: {fileID: 1890684444}
+  PMText: {fileID: 230810877}
   money: 0
   clickPower: 0
   clickMultiplier: 1
@@ -642,6 +653,17 @@ MonoBehaviour:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5793645554092891356, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
   m_PrefabInstance: {fileID: 5793645553626837597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1890684444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2556948227926100765, guid: ddd0b18a602d0c84cab0e6927f1b46fb, type: 3}
+  m_PrefabInstance: {fileID: 7058544733231759735}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
