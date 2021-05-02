@@ -76,7 +76,7 @@ public class Gacha : MonoBehaviour
 
 
         // Set cost text
-        cost.text = "One roll costs:\n" + curGacha.cost + " Gold";
+        cost.text = "One roll costs:\n" + BigNumberFormat(GetGachaCost(curGacha.cost), 1000000000) + " Gold";
 
         
     }
@@ -97,7 +97,7 @@ public class Gacha : MonoBehaviour
 
     public void RollGacha () {
 
-        PlayerStatistics.instance.LoseMoney(curGacha.cost);
+        PlayerStatistics.instance.LoseMoney(GetGachaCost(curGacha.cost));
 
         int rand = PlayerStatistics.instance.rng.Next(100);
         int rate = 0;
@@ -131,4 +131,14 @@ public class Gacha : MonoBehaviour
         return result;
     }
 
+    private double GetGachaCost(double cost) {
+        return PlayerStatistics.instance.ascension.GetGachaModifier() * cost;
+    }
+
+    private string BigNumberFormat(double bigNumber, double limit) {
+        if (bigNumber < limit) {
+            return bigNumber.ToString("F0");
+        }
+        return bigNumber.ToString("e2");
+    }
 }

@@ -23,7 +23,7 @@ public class PlayerStatistics : MonoBehaviour
     public const int BASE_CLICK_POWER = 0;
     public const int BASE_PASSIVE_POWER = 0;
     public const int BASE_TAX_PERCENTAGE = 0;
-    public const float BASE_PASSIVE_GEN = 2.0f;
+    public const float BASE_PASSIVE_GEN = 1.0f;
 
     // tracked values
     [Header("Tracked Values")]
@@ -44,9 +44,6 @@ public class PlayerStatistics : MonoBehaviour
     public Dictionary<Soup, int> soups;
     int totalSoup = 0;
 
-    //For editing only
-    public List<Soup> collectedSoupList;
-
     // Debug List of All Soups
     public Soup[] allSoups;
 
@@ -63,6 +60,8 @@ public class PlayerStatistics : MonoBehaviour
     private const float STAR_X_SPACE = 20f;
     private const float STAR_Y = -27;
 
+    public Ascension ascension;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +69,7 @@ public class PlayerStatistics : MonoBehaviour
             instance = this;
             soups = new Dictionary<Soup, int>();
             rng = new System.Random();
+            ascension = new Ascension();
             LoadAllSoup();
         } else {
             Destroy(this.gameObject);
@@ -109,9 +109,6 @@ public class PlayerStatistics : MonoBehaviour
             soups[soup] = amount;
         }
 
-        for (int i = 0; i < amount; i++) {
-            collectedSoupList.Add(soup);
-        }
         RecalculateSoup();
         SetStatDisplay();
     }
@@ -238,8 +235,8 @@ public class PlayerStatistics : MonoBehaviour
             cp = 1;
         }
 
-        clickPower = cp;
-        passivePower = pp;
+        clickPower = cp * ascension.GetAscensionBonus();
+        passivePower = pp * ascension.GetAscensionBonus();
         taxPercentage = (float) tp;
     }
 
@@ -293,6 +290,20 @@ public class PlayerStatistics : MonoBehaviour
         if (money < 0) {
             money = 0;
         }
+        SetStatDisplay();
+    }
+
+    public void Ascend() {
+        ascension.Ascend(ref soups);
+        money = 0;
+        foreach (Transform child in content.transform) {
+            Destroy(child.gameObject);
+        }
+
+        AddSoup(allSoups[13]);
+        
+        RecalculateSoup();
+        RecalculateSoupPercents();
         SetStatDisplay();
     }
 }
