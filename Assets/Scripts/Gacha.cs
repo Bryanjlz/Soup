@@ -31,7 +31,8 @@ public class Gacha : MonoBehaviour
                     rarity = 7;
                 }
                 print(rarity);
-                PlayerStatistics.instance.AddSoup(GetSoupWithRarity(rarity));
+                Soup gotten = GetSoupWithRarity(rarity);
+                PlayerStatistics.instance.AddSoup(gotten);
                 break;
             }
         }
