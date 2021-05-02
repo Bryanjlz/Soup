@@ -243,6 +243,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554133796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1260137321146100652, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+  m_PrefabInstance: {fileID: 5793645553626837597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &640533097
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,9 +286,13 @@ MonoBehaviour:
   CPText: {fileID: 409893979}
   PPText: {fileID: 1390147323}
   GoldText: {fileID: 1687552844}
+  CMText: {fileID: 554133796}
+  PMText: {fileID: 1818070080}
   money: 0
   clickPower: 0
+  clickMultiplier: 1
   passivePower: 0
+  passiveMultiplier: 1
   taxPercentage: 0.01
   pGenTime: 2
   pGenTimer: 0
@@ -840,6 +855,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1818070080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2147142004273182722, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
+  m_PrefabInstance: {fileID: 5793645553626837597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908286699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5793645553876335058, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
@@ -858,50 +884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Gacha
---- !u!1 &2021101199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2021101201}
-  - component: {fileID: 2021101200}
-  m_Layer: 0
-  m_Name: Gacha
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2021101200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021101199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1bfdacc04ab3047b591e1da0198b0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaRates: []
---- !u!4 &2021101201
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021101199}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2066293365 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7058544731165483778, guid: ddd0b18a602d0c84cab0e6927f1b46fb, type: 3}

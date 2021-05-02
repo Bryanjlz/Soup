@@ -14,6 +14,8 @@ public class PlayerStatistics : MonoBehaviour
     public TextMeshProUGUI CPText;
     public TextMeshProUGUI PPText;
     public TextMeshProUGUI GoldText;
+    public TextMeshProUGUI CMText;
+    public TextMeshProUGUI PMText;
 
     // constants 
     [Header("Constants")]
@@ -27,7 +29,9 @@ public class PlayerStatistics : MonoBehaviour
     [Header("Tracked Values")]
     public int money = BASE_MONEY;
     public int clickPower = BASE_CLICK_POWER;
+    public double clickMultiplier = 1f;
     public int passivePower = BASE_PASSIVE_POWER;
+    public double passiveMultiplier = 1f;
     public float taxPercentage = BASE_TAX_PERCENTAGE;
 
     // times
@@ -216,13 +220,19 @@ public class PlayerStatistics : MonoBehaviour
             tp += soup.taxAmountAdditive * soups[soup];
         }
 
+        clickMultiplier = 1f;
+        passiveMultiplier = 1f;
+
         foreach (Soup soup in soups.Keys) {
             //print(Math.Pow(1 + soup.clickMultiplicative, soups[soup]));
             //print(cp);
-            cp *= Math.Pow(1 + soup.clickMultiplicative, soups[soup]);
-            pp *= Math.Pow(1 + soup.passiveMultiplicative, soups[soup]);
+
+            clickMultiplier *= Math.Pow(1 + soup.clickMultiplicative, soups[soup]);
+            passiveMultiplier *= Math.Pow(1 + soup.passiveMultiplicative, soups[soup]);
             tp *= Math.Pow(1 + soup.taxAmountMultiplicative, soups[soup]);
         }
+        cp *= clickMultiplier;
+        pp *= passiveMultiplier;
 
         if (cp < 1) {
             cp = 1;
@@ -256,6 +266,8 @@ public class PlayerStatistics : MonoBehaviour
     public void SetStatDisplay() {
         CPText.text = String.Format("CP: {0}", clickPower);
         PPText.text = String.Format("PP: {0}", passivePower);
+        CMText.text = String.Format("CM: {0}x", clickMultiplier);
+        PMText.text = String.Format("PM: {0}x", passiveMultiplier);
     }
 
     public void Tax() {
