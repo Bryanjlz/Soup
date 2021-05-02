@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sphagettios
   m_EditorClassIdentifier: 
   soupName: Sphagettios
-  description: Multiply your money by 10
+  description: Passively generate 1000 more gold, clicks generate 1000 more gold
+    but and Multiply your money by 10
   rarity: 5
   sprite: {fileID: 21300000, guid: 48abf186fa06705499f803badee7d23d, type: 3}
   clickAdditive: 1000

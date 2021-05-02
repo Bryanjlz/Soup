@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Crystal Violet Soup
   m_EditorClassIdentifier: 
   soupName: Crystal Violet Soup
-  description: Become super drunk, and get in trouble with the IRS... Probably won't
-    last too long though.
+  description: Passively generate 1000 more and 150% more gold, clicks generate 1000
+    more and 150% more gold but makes you super drunk, and a target for the IRS... 
+    Probably won't last too long.
   rarity: 5
   sprite: {fileID: 21300000, guid: e9eca0fad73af4c4cbaa2af01b69844a, type: 3}
   clickAdditive: 1000
