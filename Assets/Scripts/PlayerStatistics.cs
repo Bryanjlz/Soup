@@ -53,6 +53,12 @@ public class PlayerStatistics : MonoBehaviour
     public GameObject content;
     public GameObject soupMenuPrefab;
 
+    // Star Placement Constants
+    public GameObject starPrefab;
+    private const float STAR_X_START = -40f;
+    private const float STAR_X_SPACE = 20f;
+    private const float STAR_Y = -27;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,8 +125,10 @@ public class PlayerStatistics : MonoBehaviour
             // Instantiate prefab
             GameObject newTab = Instantiate(soupMenuPrefab);
 
-            // Set Soup values
+            // Set Soup Sprite
             newTab.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = soup.sprite;
+
+            // Set Soup Description
             newTab.transform.GetChild(0).gameObject.GetComponent<CanMenuScript>().description = soup.description;
 
             // Truncate Soup name if name ends in soup
@@ -133,6 +141,9 @@ public class PlayerStatistics : MonoBehaviour
             // Set Amount
             newTab.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Number: " + amount;
 
+            // Set Star Rarity
+            CreateStars(soup, newTab.transform.GetChild(6));
+
             // Set parent, game object name, and scale
             newTab.name = soup.soupName;
             newTab.transform.SetParent(content.transform);
@@ -140,6 +151,21 @@ public class PlayerStatistics : MonoBehaviour
         }
 
         RecalculateSoupPercents();
+    }
+
+    public void CreateStars (Soup soup, Transform starParent) {
+        for (int i = 0; i < soup.rarity; i++) {
+            GameObject newStar = Instantiate(starPrefab);
+            newStar.name = "star";
+            newStar.transform.SetParent(starParent);
+            newStar.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            // Rect Transform
+            RectTransform rt = newStar.GetComponent<RectTransform>();
+            Rect r = new Rect(STAR_X_START + STAR_X_SPACE * i, STAR_Y, 16f, 16f);
+            rt.sizeDelta = new Vector2(16f, 16f);
+            rt.localPosition = new Vector2(STAR_X_START + STAR_X_SPACE * i, STAR_Y);
+        }
     }
 
     public void RecalculateSoupPercents () {
@@ -200,7 +226,6 @@ public class PlayerStatistics : MonoBehaviour
         PPText.text = String.Format("PP: {0}", passivePower);
     }
 
-    
     public void Tax() {
         int taxes = (int) (taxPercentage * money);
         int newVal = money - taxes;
