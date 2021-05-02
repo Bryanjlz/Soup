@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soupName: Water Soup
   description: 
-  rarity: 0
+  rarity: 4
   sprite: {fileID: 21300000, guid: 8270ea7ace4b0c749b4570b3affec28c, type: 3}
   clickAdditive: 0
   passiveAdditive: 0

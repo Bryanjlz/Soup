@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soupName: Crab Soup
   description: 
-  rarity: 0
+  rarity: 3
   sprite: {fileID: 21300000, guid: c863888f47c3da347aadb1a29021cdc0, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
