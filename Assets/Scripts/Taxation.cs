@@ -7,7 +7,7 @@ public class Taxation: MonoBehaviour {
 
     [Header("Taxation QTE Object")]
     public GameObject qtePopup;                 // Instantiate to trigger QTE
-    public Canvas canvas;                       // Canvas to act as parent to QTE
+    public Transform canvas;                       // Canvas to act as parent to QTE
 
     [Header("Taxation Info")]
     public double taxTimer;                     // Tracks time until next taxation
@@ -36,7 +36,7 @@ public class Taxation: MonoBehaviour {
     }
 
     public void Tax() {
-        GameObject go = Instantiate(qtePopup, canvas.transform);
+        GameObject go = Instantiate(qtePopup, canvas);
         go.GetComponent<QuickTimeEvent>().random = random;
     }
 }
