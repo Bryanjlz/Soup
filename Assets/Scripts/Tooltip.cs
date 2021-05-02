@@ -14,7 +14,7 @@ public class Tooltip : MonoBehaviour
     public float textPadding = 4f;
     public int charLimit = 15;
 
-    private void Awake() {
+    private void Start() {
         HideTooltip();
     }
 
@@ -29,7 +29,6 @@ public class Tooltip : MonoBehaviour
 
     public void ShowTooltip(string ttstring) {
         isShown = true;
-        gameObject.SetActive(true);
 
         // Set text
         text.text = parseString(ttstring);
@@ -40,7 +39,8 @@ public class Tooltip : MonoBehaviour
 
     public void HideTooltip() {
         isShown = false;
-        gameObject.SetActive(false);
+        background.sizeDelta = new Vector2(0, 0);
+        text.text = "";
     }
 
     private string parseString (string ttstring) {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Asparagus Soup
   m_EditorClassIdentifier: 
   soupName: Asparagus Soup
-  description: 
+  description: test 4 5 6
   rarity: 0
   sprite: {fileID: 21300000, guid: f3d916b792c4a73448d131cca6b5aec9, type: 3}
   clickAdditive: 0

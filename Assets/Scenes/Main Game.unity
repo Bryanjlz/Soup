@@ -285,6 +285,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 898066722}
     m_Modifications:
+    - target: {fileID: 8122993157267077971, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157267077973, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8122993157313012230, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -372,6 +380,18 @@ PrefabInstance:
     - target: {fileID: 8122993157313012231, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_Name
       value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157313012231, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157781444753, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_text
+      value: text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157781444767, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
