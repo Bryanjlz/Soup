@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class PlayerStatistics : MonoBehaviour
 {
@@ -92,10 +93,31 @@ public class PlayerStatistics : MonoBehaviour
 
     public void Click() {
         GainMoney(clickPower);
+        Vector2 clickStart = Input.mousePosition;
+        clickStart.y += 1;
+        GameObject moneyText = ObjectPool.SharedInstance.GetPooledObject();
+        if (moneyText != null)
+        {
+            moneyText.transform.position = clickStart;
+            moneyText.transform.rotation = this.transform.rotation;
+            moneyText.GetComponent<TextMeshProUGUI>().text = "+" + clickPower + "$";
+            moneyText.SetActive(true);
+            StartCoroutine(LateCall(moneyText));
+        }
+    }
+
+    IEnumerator LateCall(GameObject moneyText)
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        moneyText.SetActive(false);
+        //Do Function here...
     }
 
     public void AddSoup(Soup soup) {
         AddSoup(soup, 1);
+        
     }
 
     public void AddSoup(Soup soup, int amount) {
