@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Orange Guice Soup
   m_EditorClassIdentifier: 
   soupName: Orange Guice Soup
-  description: The one true OG soup.
+  description: The one true OG soup. ASCEND!
   rarity: 7
   sprite: {fileID: 21300000, guid: bcff495c821296b44b1bfe1258e9d47a, type: 3}
   clickAdditive: 0
