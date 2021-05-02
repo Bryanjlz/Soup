@@ -27,7 +27,6 @@ public class Gacha : MonoBehaviour
         ChangeGacha("Medium");
         med.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
         ChangeGacha("High");
-        print(AutoDescription(curGacha));
         high.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
 
         ChangeGacha("Low");
@@ -104,13 +103,11 @@ public class Gacha : MonoBehaviour
         int rate = 0;
         for (int i = 0; i < curGacha.rates.Length; i++) {
             rate += curGacha.rates[i];
-            print(rate);
             if (rand < rate) {
                 int rarity = i + 1;
                 if (rarity == 6) {
                     rarity = 7;
                 }
-                print(rarity);
                 Soup gotten = GetSoupWithRarity(rarity);
                 PlayerStatistics.instance.AddSoup(gotten);
                 gottenThing.gameObject.GetComponent<Image>().sprite = gotten.sprite;

@@ -24,7 +24,6 @@ public class CanMenuScript : MonoBehaviour
     }
 
     public void HideTooltip() {
-        print("hide");
         tooltip.GetComponent<Tooltip>().HideTooltip();
     }
 }
