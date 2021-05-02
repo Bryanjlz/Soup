@@ -94,7 +94,6 @@ public class PlayerStatistics : MonoBehaviour
         AddSoupToMenu(soup, amount);
 
         if (soups.ContainsKey(soup)) {
-            print("found soup");
             soups[soup] += amount;
         } else {
             soups[soup] = amount;
@@ -118,9 +117,9 @@ public class PlayerStatistics : MonoBehaviour
             // Update all percents
             foreach (Transform tab1 in content.transform) {
                 print("ayo");
-                string number = tab.GetChild(2).gameObject.GetComponent<TMP_Text>().text;
+                string number = tab1.GetChild(2).gameObject.GetComponent<TMP_Text>().text;
                 int amount1 = int.Parse(number.Substring(number.IndexOf(" ") + 1));
-                tab.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount1 / totalSoup)) + "%";
+                tab1.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount1 / totalSoup)) + "%";
             }
 
         } else {
@@ -129,14 +128,25 @@ public class PlayerStatistics : MonoBehaviour
 
             // Set Soup values
             newTab.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = soup.sprite;
-            newTab.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = "Type: " + soup.soupName;
+            string soupName = soup.soupName;
+            if (soupName.Substring(soupName.LastIndexOf(" ") + 1, 4).ToLowerInvariant().Equals("soup")) {
+                soupName = soupName.Substring(0, soupName.LastIndexOf(" "));
+            }
+            newTab.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = "Type: " + soupName;
             newTab.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = "Number: " + amount;
-            newTab.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount / totalSoup)) + "%";
 
             // Set parent, game object name, and scale
             newTab.name = soup.soupName;
             newTab.transform.SetParent(content.transform);
             newTab.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            // Update all percents
+            foreach (Transform tab1 in content.transform) {
+                print("ayo");
+                string number = tab1.GetChild(2).gameObject.GetComponent<TMP_Text>().text;
+                int amount1 = int.Parse(number.Substring(number.IndexOf(" ") + 1));
+                tab1.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "Percent: " + Math.Round(100f * ((float)amount1 / totalSoup)) + "%";
+            }
         }
     }
 
