@@ -47,7 +47,7 @@ public class PlayerStatistics : MonoBehaviour
     public Soup[] allSoups;
 
     //RNG
-    System.Random rng;
+    public System.Random rng;
 
     // Scroll bar parent
     public GameObject content;
