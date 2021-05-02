@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Nitroglycerin Soup
   m_EditorClassIdentifier: 
   soupName: Nitroglycerin Soup
-  description: Explode after a little bit.
+  description: Passively generate 1000 more gold, clicks generate 1000 more gold
+    but Explode after a little bit.
   rarity: 5
   sprite: {fileID: 21300000, guid: ea8681a508ac48d4f9eff94e703cd7ad, type: 3}
   clickAdditive: 1000

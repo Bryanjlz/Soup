@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Crystal Violet Soup
   m_EditorClassIdentifier: 
   soupName: Crystal Violet Soup
-  description: 
+  description: Passively generate 1000 more gold, clicks generate 1000 more gold
+    but is radioactive and the IRS will come after you for some time...
   rarity: 5
   sprite: {fileID: 21300000, guid: e9eca0fad73af4c4cbaa2af01b69844a, type: 3}
   clickAdditive: 0
