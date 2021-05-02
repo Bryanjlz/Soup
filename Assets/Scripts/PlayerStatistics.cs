@@ -8,20 +8,6 @@ using System.Collections;
 
 public class PlayerStatistics : MonoBehaviour
 {
-    [DllImport("user32.dll")]
-    public static extern bool SetCursorPos(int X, int Y);
-    [DllImport("user32.dll")]
-    [return: MarshalAs(UnmanagedType.Bool)]
-    private static extern bool GetCursorPos(out MousePosition lpMousePosition);
-
-    public int xdmp;
-    public int ydmp;
-    [StructLayout(LayoutKind.Sequential)]
-    public struct MousePosition {
-        public int x;
-        public int y;
-    }
-
     // Singleton
     public static PlayerStatistics instance;
 
@@ -81,6 +67,24 @@ public class PlayerStatistics : MonoBehaviour
     int xDest = 0;
     int yDest = 0;
     float speed = 3f;
+
+    // Drunk Mouse stuff I don't understand
+    [DllImport("user32.dll")]
+    public static extern bool SetCursorPos(int X, int Y);
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GetCursorPos(out MousePosition lpMousePosition);
+
+    public int xdmp;
+    public int ydmp;
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MousePosition {
+        public int x;
+        public int y;
+    }
+
+    // Auto Confirm
+    public bool autoConfirm = false;
 
     public Ascension ascension;
 
@@ -355,7 +359,7 @@ public class PlayerStatistics : MonoBehaviour
     private void LoadAllSoup() {
         allSoups = Resources.LoadAll<Soup>("Soups");
 
-        AddSoup(allSoups[23]);
+        AddSoup(allSoups[13]);
 
         //Debug - seems to work for now
         /*
