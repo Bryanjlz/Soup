@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Gacha : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Gacha : MonoBehaviour
     public string gachaName;
 
     public Button low, med, high, roll;
+
+    public TMP_Text cost;
 
     private GachaRate curGacha;
 
@@ -52,11 +55,14 @@ public class Gacha : MonoBehaviour
             }
         }
 
-        
+        // Set cost text
+        cost.text = "One roll costs:\n" + curGacha.cost + " Gold";
     }
 
 
     public void RollGacha () {
+
+        PlayerStatistics.instance.LoseMoney(curGacha.cost);
 
         int rand = PlayerStatistics.instance.rng.Next(100);
         int rate = 0;

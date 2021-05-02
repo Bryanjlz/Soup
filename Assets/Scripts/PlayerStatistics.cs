@@ -83,7 +83,7 @@ public class PlayerStatistics : MonoBehaviour
         pGenTimer += Time.deltaTime;
 
         if (pGenTimer >= pGenTime) {
-            money += passivePower;
+            GainMoney(passivePower);
             pGenTimer = 0f;
         }
 
@@ -91,7 +91,7 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     public void Click() {
-        money += clickPower;
+        GainMoney(clickPower);
     }
 
     public void AddSoup(Soup soup) {
@@ -272,11 +272,20 @@ public class PlayerStatistics : MonoBehaviour
 
     public void Tax() {
         int taxes = (int) (taxPercentage * money);
-        int newVal = money - taxes;
-        if (newVal <= 0) {
-            newVal = 0;
+        LoseMoney(taxes);
+        SetStatDisplay();
+    }
+
+    public void GainMoney (int gain) {
+        money += gain;
+        SetStatDisplay();
+    }
+
+    public void LoseMoney (int loss) {
+        money -= loss;
+        if (money < 0) {
+            money = 0;
         }
-        money = newVal;
         SetStatDisplay();
     }
 }
