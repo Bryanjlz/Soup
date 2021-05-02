@@ -355,7 +355,7 @@ public class PlayerStatistics : MonoBehaviour
     private void LoadAllSoup() {
         allSoups = Resources.LoadAll<Soup>("Soups");
 
-        AddSoup(allSoups[23]);
+        AddSoup(allSoups[13]);
 
         //Debug - seems to work for now
         /*
