@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soupName: Sphagettios
   description: 
-  rarity: 0
+  rarity: 5
   sprite: {fileID: 21300000, guid: 48abf186fa06705499f803badee7d23d, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
