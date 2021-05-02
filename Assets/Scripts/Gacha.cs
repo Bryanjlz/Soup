@@ -7,13 +7,43 @@ public class Gacha : MonoBehaviour
 {
     public GachaRate[] gachaRates;
     public GameObject gottenThing;
+    public string gachaName;
+
+    public Button low, med, high, roll;
+
+    private GachaRate curGacha;
 
     private void Start() {
+        gachaName = "Low";
         LoadGacha();
+        ChangeGacha(gachaName);
     }
 
-    public void RollGacha (string gachaName) {
-        GachaRate curGacha = null;
+    private void Update() {
+        if (curGacha.cost > PlayerStatistics.instance.money) {
+            roll.interactable = false;
+        } else {
+            roll.interactable = true;
+        }
+    }
+
+    public void ChangeGacha(string newName) {
+        // Set gacha mame
+        gachaName = newName;
+
+        // Enable all buttons
+        low.interactable = true;
+        med.interactable = true;
+        high.interactable = true;
+
+        // Disable new gacha button
+        if (gachaName.Equals("Low")) {
+            low.interactable = false;
+        } else if (gachaName.Equals("Medium")) {
+            med.interactable = false;
+        } else {
+            high.interactable = false;
+        }
 
         // Find the gacha
         foreach (GachaRate gacha in gachaRates) {
@@ -21,6 +51,12 @@ public class Gacha : MonoBehaviour
                 curGacha = gacha;
             }
         }
+
+        
+    }
+
+
+    public void RollGacha () {
 
         int rand = PlayerStatistics.instance.rng.Next(100);
         int rate = 0;

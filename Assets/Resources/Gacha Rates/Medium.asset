@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb0b33f766e8a40926e6e1c79f511f, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
+  cost: 10000
   rates: 19000000230000001e000000090000000100000000000000

@@ -6,5 +6,6 @@ using UnityEngine;
 
 public class GachaRate : ScriptableObject
 {
+    public int cost;
     public int[] rates;
 }

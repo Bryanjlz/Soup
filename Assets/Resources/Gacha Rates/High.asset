@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb0b33f766e8a40926e6e1c79f511f, type: 3}
   m_Name: High
   m_EditorClassIdentifier: 
+  cost: 1000000
   rates: 010000001300000023000000190000001300000001000000
