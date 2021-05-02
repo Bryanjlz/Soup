@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nest Tea Ramen Soup
   m_EditorClassIdentifier: 
   soupName: Nest Tea Ramen Soup
-  description: 
+  description: Randomly add new soups to the mix
   rarity: 5
   sprite: {fileID: 21300000, guid: 3461baccffb814346a93b62611f8e067, type: 3}
   clickAdditive: 0
