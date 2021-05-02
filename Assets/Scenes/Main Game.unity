@@ -661,6 +661,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8066682231838032778, guid: 4356ecba7bd9dd14b8efed9768e6ecc3, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066682231838032778, guid: 4356ecba7bd9dd14b8efed9768e6ecc3, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
       value: 1
       objectReference: {fileID: 0}
