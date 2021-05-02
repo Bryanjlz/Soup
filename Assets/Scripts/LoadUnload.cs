@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class LoadUnload : MonoBehaviour
 {
     bool GachaOpen = false;
-    public string sceneName;
+    public GameObject thePanel;
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape) && GachaOpen) {
@@ -15,12 +15,12 @@ public class LoadUnload : MonoBehaviour
     public void Load(string sceneName)
     {
         GachaOpen = true;
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        thePanel.SetActive(true);
     }
     public void Unload()
     {
         GachaOpen = false;
-        SceneManager.UnloadSceneAsync(sceneName);
+        thePanel.SetActive(false);
     }
 
 

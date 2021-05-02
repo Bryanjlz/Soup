@@ -69,9 +69,9 @@ public class PlayerStatistics : MonoBehaviour
     float speed = 3f;
 
     // Drunk Mouse stuff I don't understand
-    [DllImport("user32.dll")]
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
     public static extern bool SetCursorPos(int X, int Y);
-    [DllImport("user32.dll")]
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool GetCursorPos(out MousePosition lpMousePosition);
 
@@ -82,6 +82,9 @@ public class PlayerStatistics : MonoBehaviour
         public int x;
         public int y;
     }
+
+    // Camera
+    public GameObject theCam;
 
     // Auto Confirm
     public bool autoConfirm = false;
@@ -134,7 +137,7 @@ public class PlayerStatistics : MonoBehaviour
         }
         xDest -= Math.Abs(xdmp);
         yDest -= Math.Abs(ydmp);
-        SetCursorPos(mp.x + xdmp, mp.y + ydmp);
+        theCam.transform.position = new Vector2(mp.x + xdmp, mp.y + ydmp);
     }
 
     // Update is called once per frame
