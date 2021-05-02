@@ -24,14 +24,14 @@ public class PlayerStatistics : MonoBehaviour
     public const int BASE_CLICK_POWER = 0;
     public const int BASE_PASSIVE_POWER = 0;
     public const int BASE_TAX_PERCENTAGE = 0;
-    public const float BASE_PASSIVE_GEN = 2.0f;
+    public const float BASE_PASSIVE_GEN = 1.0f;
 
     // tracked values
     [Header("Tracked Values")]
-    public int money = BASE_MONEY;
-    public int clickPower = BASE_CLICK_POWER;
+    public double money = BASE_MONEY;
+    public double clickPower = BASE_CLICK_POWER;
     public double clickMultiplier = 1f;
-    public int passivePower = BASE_PASSIVE_POWER;
+    public double passivePower = BASE_PASSIVE_POWER;
     public double passiveMultiplier = 1f;
     public float taxPercentage = BASE_TAX_PERCENTAGE;
 
@@ -44,9 +44,6 @@ public class PlayerStatistics : MonoBehaviour
     // List of Soups
     public Dictionary<Soup, int> soups;
     int totalSoup = 0;
-
-    //For editing only
-    public List<Soup> collectedSoupList;
 
     // Debug List of All Soups
     public Soup[] allSoups;
@@ -64,6 +61,8 @@ public class PlayerStatistics : MonoBehaviour
     private const float STAR_X_SPACE = 20f;
     private const float STAR_Y = -27;
 
+    public Ascension ascension;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +70,7 @@ public class PlayerStatistics : MonoBehaviour
             instance = this;
             soups = new Dictionary<Soup, int>();
             rng = new System.Random();
+            ascension = new Ascension();
             LoadAllSoup();
         } else {
             Destroy(this.gameObject);
@@ -88,7 +88,7 @@ public class PlayerStatistics : MonoBehaviour
             pGenTimer = 0f;
         }
 
-        GoldText.text = String.Format("Gold: {0}", money);
+        GoldText.text = String.Format("Gold: {0}", BigNumberFormat(money, 1000000000));
     }
 
     public void Click() {
@@ -131,9 +131,10 @@ public class PlayerStatistics : MonoBehaviour
             soups[soup] = amount;
         }
 
-        for (int i = 0; i < amount; i++) {
-            collectedSoupList.Add(soup);
+        if (soup.associatedPrefab != null) {
+            Instantiate(soup.associatedPrefab);
         }
+
         RecalculateSoup();
         SetStatDisplay();
     }
@@ -216,7 +217,6 @@ public class PlayerStatistics : MonoBehaviour
 
             // Rect Transform
             RectTransform rt = newStar.GetComponent<RectTransform>();
-            Rect r = new Rect(STAR_X_START + STAR_X_SPACE * i, STAR_Y, 16f, 16f);
             rt.sizeDelta = new Vector2(16f, 16f);
             rt.localPosition = new Vector2(STAR_X_START + STAR_X_SPACE * i, STAR_Y);
         }
@@ -260,9 +260,9 @@ public class PlayerStatistics : MonoBehaviour
             cp = 1;
         }
 
-        clickPower = (int) cp;
-        passivePower = (int) pp;
-        taxPercentage = (int) tp;
+        clickPower = cp * ascension.GetAscensionBonus();
+        passivePower = pp * ascension.GetAscensionBonus();
+        taxPercentage = (float) tp;
     }
 
     public void GainRandomSoup() {
@@ -286,28 +286,49 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     public void SetStatDisplay() {
-        CPText.text = String.Format("CP: {0}", Math.Round((double)clickPower));
-        PPText.text = String.Format("PP: {0}", Math.Round((double)passivePower));
-        CMText.text = String.Format("CM: {0}x", Math.Round(100 * clickMultiplier)/100f);
-        PMText.text = String.Format("PM: {0}x", Math.Round(100 * passiveMultiplier)/100f);
+        CPText.text = String.Format("CP: {0} Gold/Click", BigNumberFormat(clickPower, 1000000000.0));
+        PPText.text = String.Format("PP: {0} Gold/s", BigNumberFormat(passivePower, 1000000000.0));
+        CMText.text = String.Format("CM: {0}x", BigNumberFormat((100 * clickMultiplier)/100f, 10000));
+        PMText.text = String.Format("PM: {0}x", BigNumberFormat((100 * passiveMultiplier)/100f, 100000));
+    }
+
+    private string BigNumberFormat(double bigNumber, double limit) {
+        if (bigNumber < limit) {
+            return bigNumber.ToString("F0");
+        }
+        return bigNumber.ToString("e2");
     }
 
     public void Tax() {
-        int taxes = (int) (taxPercentage * money);
+        double taxes = taxPercentage * money;
         LoseMoney(taxes);
         SetStatDisplay();
     }
 
-    public void GainMoney (int gain) {
+    public void GainMoney (double gain) {
         money += gain;
         SetStatDisplay();
     }
 
-    public void LoseMoney (int loss) {
+    public void LoseMoney (double loss) {
         money -= loss;
         if (money < 0) {
             money = 0;
         }
+        SetStatDisplay();
+    }
+
+    public void Ascend() {
+        ascension.Ascend(ref soups);
+        money = 0;
+        foreach (Transform child in content.transform) {
+            Destroy(child.gameObject);
+        }
+
+        AddSoup(allSoups[13]);
+        
+        RecalculateSoup();
+        RecalculateSoupPercents();
         SetStatDisplay();
     }
 }
