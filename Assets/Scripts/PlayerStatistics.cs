@@ -163,19 +163,19 @@ public class PlayerStatistics : MonoBehaviour
             d += "Makes your clicks give you " + soup.clickAdditive + " more gold. \n";
         }
         if (soup.clickMultiplicative > 0) {
-            d += "Makes your clicks give you " + soup.clickMultiplicative + "% more gold. \n";
+            d += "Makes your clicks give you " + (100 * soup.clickMultiplicative) + "% more gold. \n";
         }
         if (soup.passiveAdditive > 0) {
             d += "Passively generates " + soup.passiveAdditive + " gold. \n";
         }
         if (soup.passiveMultiplicative > 0) {
-            d += "Passively generates " + soup.passiveMultiplicative + "% more gold. \n";
+            d += "Passively generates " + (100 * soup.passiveMultiplicative) + "% more gold. \n";
         }
         if (soup.taxAmountAdditive > 0) {
             d += "You are now taxed " + soup.taxAmountAdditive + " more gold. \n";
         }
         if (soup.taxAmountMultiplicative > 0) {
-            d += "You are now taxed " + soup.taxAmountMultiplicative + "% more gold. \n";
+            d += "You are now taxed " + (100 * soup.taxAmountMultiplicative) + "% more gold. \n";
         }
 
         return d;
