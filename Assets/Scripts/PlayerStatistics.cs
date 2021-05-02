@@ -224,6 +224,10 @@ public class PlayerStatistics : MonoBehaviour
             tp *= Math.Pow(1 + soup.taxAmountMultiplicative, soups[soup]);
         }
 
+        if (cp < 1) {
+            cp = 1;
+        }
+
         clickPower = (int) cp;
         passivePower = (int) pp;
         taxPercentage = (int) tp;
