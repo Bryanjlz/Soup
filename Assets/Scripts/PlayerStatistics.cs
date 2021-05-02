@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
-
+using System.Collections;
 
 public class PlayerStatistics : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public class PlayerStatistics : MonoBehaviour
     public const int BASE_CLICK_POWER = 0;
     public const int BASE_PASSIVE_POWER = 0;
     public const int BASE_TAX_PERCENTAGE = 0;
-    public const float BASE_PASSIVE_GEN = 2.0f;
+    public const float BASE_PASSIVE_GEN = 1.0f;
 
     // tracked values
     [Header("Tracked Values")]
@@ -59,9 +59,6 @@ public class PlayerStatistics : MonoBehaviour
     // List of Soups
     public Dictionary<Soup, int> soups;
     int totalSoup = 0;
-
-    //For editing only
-    public List<Soup> collectedSoupList;
 
     // Debug List of All Soups
     public Soup[] allSoups;
@@ -86,13 +83,16 @@ public class PlayerStatistics : MonoBehaviour
     int yDest = 0;
     float speed = 1f;
     
+    public Ascension ascension;
 
-// Start is called before the first frame update
-    void Start() {
+    // Start is called before the first frame update
+    void Start()
+    {
         if (!instance) {
             instance = this;
             soups = new Dictionary<Soup, int>();
             rng = new System.Random();
+            ascension = new Ascension();
             LoadAllSoup();
         } else {
             Destroy(this.gameObject);
@@ -137,10 +137,31 @@ public class PlayerStatistics : MonoBehaviour
 
     public void Click() {
         GainMoney(clickPower);
+        Vector2 clickStart = Input.mousePosition;
+        clickStart.y += 1;
+        GameObject moneyText = ObjectPool.SharedInstance.GetPooledObject();
+        if (moneyText != null)
+        {
+            moneyText.transform.position = clickStart;
+            moneyText.transform.rotation = this.transform.rotation;
+            moneyText.GetComponent<TextMeshProUGUI>().text = "+" + clickPower + "$";
+            moneyText.SetActive(true);
+            StartCoroutine(LateCall(moneyText));
+        }
+    }
+
+    IEnumerator LateCall(GameObject moneyText)
+    {
+
+        yield return new WaitForSeconds(1f);
+
+        moneyText.SetActive(false);
+        //Do Function here...
     }
 
     public void AddSoup(Soup soup) {
         AddSoup(soup, 1);
+        
     }
 
     public void AddSoup(Soup soup, int amount) {
@@ -154,9 +175,10 @@ public class PlayerStatistics : MonoBehaviour
             soups[soup] = amount;
         }
 
-        for (int i = 0; i < amount; i++) {
-            collectedSoupList.Add(soup);
+        if (soup.associatedPrefab != null) {
+            Instantiate(soup.associatedPrefab);
         }
+
         RecalculateSoup();
         SetStatDisplay();
     }
@@ -282,8 +304,8 @@ public class PlayerStatistics : MonoBehaviour
             cp = 1;
         }
 
-        clickPower = cp;
-        passivePower = pp;
+        clickPower = cp * ascension.GetAscensionBonus();
+        passivePower = pp * ascension.GetAscensionBonus();
         taxPercentage = (float) tp;
     }
 
@@ -337,6 +359,20 @@ public class PlayerStatistics : MonoBehaviour
         if (money < 0) {
             money = 0;
         }
+        SetStatDisplay();
+    }
+
+    public void Ascend() {
+        ascension.Ascend(ref soups);
+        money = 0;
+        foreach (Transform child in content.transform) {
+            Destroy(child.gameObject);
+        }
+
+        AddSoup(allSoups[13]);
+        
+        RecalculateSoup();
+        RecalculateSoupPercents();
         SetStatDisplay();
     }
 }
