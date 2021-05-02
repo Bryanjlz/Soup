@@ -264,10 +264,10 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     public void SetStatDisplay() {
-        CPText.text = String.Format("CP: {0}", clickPower);
-        PPText.text = String.Format("PP: {0}", passivePower);
-        CMText.text = String.Format("CM: {0}x", clickMultiplier);
-        PMText.text = String.Format("PM: {0}x", passiveMultiplier);
+        CPText.text = String.Format("CP: {0}", Math.Round((double)clickPower));
+        PPText.text = String.Format("PP: {0}", Math.Round((double)passivePower));
+        CMText.text = String.Format("CM: {0}x", Math.Round((double)clickMultiplier));
+        PMText.text = String.Format("PM: {0}x", Math.Round((double)passiveMultiplier));
     }
 
     public void Tax() {
