@@ -3,9 +3,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices;
+
 
 public class PlayerStatistics : MonoBehaviour
 {
+    [DllImport("user32.dll")]
+    public static extern bool SetCursorPos(int X, int Y);
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GetCursorPos(out MousePosition lpMousePosition);
+
+    public int xdmp;
+    public int ydmp;
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MousePosition {
+        public int x;
+        public int y;
+    }
+
     // Singleton
     public static PlayerStatistics instance;
 
@@ -63,9 +79,16 @@ public class PlayerStatistics : MonoBehaviour
     private const float STAR_X_SPACE = 20f;
     private const float STAR_Y = -27;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    // Drunk stuff
+    public int drunkness = 0;
+    bool isMoving = false;
+    int xDest = 0;
+    int yDest = 0;
+    float speed = 1f;
+    
+
+// Start is called before the first frame update
+    void Start() {
         if (!instance) {
             instance = this;
             soups = new Dictionary<Soup, int>();
@@ -75,6 +98,28 @@ public class PlayerStatistics : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void FixedUpdate() {
+        MousePosition mp;
+        GetCursorPos(out mp);
+        if (xDest <= 5 && yDest <= 5) {
+            xDest = rng.Next(drunkness);
+            yDest = rng.Next(drunkness);
+
+            xdmp = (int)(xDest / speed);
+            ydmp = (int)(yDest / speed);
+
+            if (rng.Next(2) == 0) {
+                xdmp *= -1;
+            }
+            if (rng.Next(2) == 0) {
+                ydmp *= -1;
+            }
+        }
+        xDest -= (Math.Abs(xdmp));
+        yDest -= (Math.Abs(ydmp));
+        SetCursorPos(mp.x + xdmp, mp.y + ydmp);
     }
 
     // Update is called once per frame
