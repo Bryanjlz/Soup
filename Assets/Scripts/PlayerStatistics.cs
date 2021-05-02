@@ -191,7 +191,6 @@ public class PlayerStatistics : MonoBehaviour
 
             // Rect Transform
             RectTransform rt = newStar.GetComponent<RectTransform>();
-            Rect r = new Rect(STAR_X_START + STAR_X_SPACE * i, STAR_Y, 16f, 16f);
             rt.sizeDelta = new Vector2(16f, 16f);
             rt.localPosition = new Vector2(STAR_X_START + STAR_X_SPACE * i, STAR_Y);
         }
