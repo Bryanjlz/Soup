@@ -3,6 +3,8 @@ using System;
 
 public class Taxation: MonoBehaviour {
 
+    public static Taxation instance;
+
     [Header("Taxation QTE Object")]
     public GameObject qtePopup;                 // Instantiate to trigger QTE
     public Canvas canvas;                       // Canvas to act as parent to QTE
@@ -10,13 +12,18 @@ public class Taxation: MonoBehaviour {
     [Header("Taxation Info")]
     public double taxTimer;                     // Tracks time until next taxation
 
-    public const double TAX_TIMER = 20;
+    public double TAX_TIMER = 20;
 
     private System.Random random;              
 
     void Start() {
-        taxTimer = TAX_TIMER;
-        random = new System.Random();
+        if (!instance) {
+            instance = this;
+            taxTimer = TAX_TIMER;
+            random = new System.Random();
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     public void Update() {
