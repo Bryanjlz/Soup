@@ -107,34 +107,40 @@ public class PlayerStatistics : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        speed = drunkness / 5f;
-        if (speed > 10f) {
-            speed = 10f;
+        if (drunkness < 0) {
+            drunkness = 0;
         }
-        MousePosition mp;
-        GetCursorPos(out mp);
-        if ((xDest <= 5 || yDest <= 5) && drunkness != 0) {
-            xDest = rng.Next(drunkness);
-            yDest = rng.Next(drunkness);
 
-            xdmp = (int)(xDest / speed);
-            ydmp = (int)(yDest / speed);
+        if (drunkness > 0) {
+            speed = drunkness / 5f;
+            if (speed > 10f) {
+                speed = 10f;
+            }
+            MousePosition mp;
+            GetCursorPos(out mp);
+            if ((xDest <= 5 || yDest <= 5) && drunkness != 0) {
+                xDest = rng.Next(drunkness);
+                yDest = rng.Next(drunkness);
 
-            if (xdmp == 0 && ydmp == 0 && drunkness != 0) {
-                xdmp = 1;
-                ydmp = 1;
-            }
+                xdmp = (int)(xDest / speed);
+                ydmp = (int)(yDest / speed);
 
-            if (rng.Next(2) == 0) {
-                xdmp *= -1;
+                if (xdmp == 0 && ydmp == 0 && drunkness != 0) {
+                    xdmp = 1;
+                    ydmp = 1;
+                }
+
+                if (rng.Next(2) == 0) {
+                    xdmp *= -1;
+                }
+                if (rng.Next(2) == 0) {
+                    ydmp *= -1;
+                }
             }
-            if (rng.Next(2) == 0) {
-                ydmp *= -1;
-            }
+            xDest -= Math.Abs(xdmp);
+            yDest -= Math.Abs(ydmp);
+            SetCursorPos(mp.x + xdmp, mp.y + ydmp);
         }
-        xDest -= Math.Abs(xdmp);
-        yDest -= Math.Abs(ydmp);
-        SetCursorPos(mp.x + xdmp, mp.y + ydmp);
     }
 
     // Update is called once per frame
