@@ -10,8 +10,13 @@ public class Gacha : MonoBehaviour
     public Soup curSoup;
     public GameObject gottenThing;
     public string gachaName;
+
     public GameObject confirmation;
-    public bool inRoll;
+    public bool inRoll = false;
+
+    public GameObject checkbox;
+    public Sprite offBox;
+    public Sprite onBox;
 
     private string rollDescription1 = "Insufficient Funds!";
     private string rollDescription2 = "Doing roll!";
@@ -40,6 +45,13 @@ public class Gacha : MonoBehaviour
         high.gameObject.GetComponent<CanMenuScript>().description = AutoDescription(curGacha);
 
         ChangeGacha("Low");
+
+        if (PlayerStatistics.instance.autoConfirm) {
+            checkbox.GetComponent<Image>().sprite = onBox;
+        } else {
+            checkbox.GetComponent<Image>().sprite = offBox;
+        }
+
     }
 
     private void LoadGacha() {
@@ -51,6 +63,16 @@ public class Gacha : MonoBehaviour
             roll.interactable = false;
         } else if (!inRoll) {
             roll.interactable = true;
+        }
+    }
+
+    public void ClickButton() {
+        if (PlayerStatistics.instance.autoConfirm) {
+            checkbox.GetComponent<Image>().sprite = offBox;
+            PlayerStatistics.instance.autoConfirm = false;
+        } else {
+            checkbox.GetComponent<Image>().sprite = onBox;
+            PlayerStatistics.instance.autoConfirm = true;
         }
     }
 
@@ -83,12 +105,8 @@ public class Gacha : MonoBehaviour
                 curGacha = gacha;
             }
         }
-
-
         // Set cost text
         cost.text = "One roll costs:\n" + BigNumberFormat(GetGachaCost(curGacha.cost), 1000000000) + " Gold";
-
-        
     }
 
     public string AutoDescription (GachaRate gachaRate) {
@@ -103,7 +121,6 @@ public class Gacha : MonoBehaviour
         res = res.Substring(0, res.LastIndexOf("\n"));
         return res;
     }
-
 
     public void RollGacha () {
         PlayerStatistics.instance.LoseMoney(GetGachaCost(curGacha.cost));
@@ -127,10 +144,14 @@ public class Gacha : MonoBehaviour
                 }
 
                 CreateStars(rarity);
-                confirmation.SetActive(true);
-                roll.interactable = false;
-                inRoll = true;
-                roll.GetComponent<CanMenuScript>().description = rollDescription2;
+                if (!PlayerStatistics.instance.autoConfirm) {
+                    confirmation.SetActive(true);
+                    roll.interactable = false;
+                    inRoll = true;
+                    roll.GetComponent<CanMenuScript>().description = rollDescription2;
+                } else {
+                    PlayerStatistics.instance.AddSoup(curSoup);
+                }
                 break;
             }
         }
