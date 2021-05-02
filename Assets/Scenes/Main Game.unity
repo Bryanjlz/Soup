@@ -325,7 +325,7 @@ MonoBehaviour:
   GoldText: {fileID: 1687552844}
   CMText: {fileID: 1890684444}
   PMText: {fileID: 230810877}
-  money: 0
+  money: 100
   clickPower: 0
   clickMultiplier: 1
   passivePower: 0
