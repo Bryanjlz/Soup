@@ -259,6 +259,7 @@ MonoBehaviour:
   allSoups: []
   content: {fileID: 8711032257711144081}
   soupMenuPrefab: {fileID: 3477782160428888210, guid: 5a373e9b6f284d143b7fc8fd251200d5, type: 3}
+  starPrefab: {fileID: 6383753958566600913, guid: cca56dbe654076d4ea5d1fc797fc9959, type: 3}
 --- !u!4 &640533099
 Transform:
   m_ObjectHideFlags: 0
@@ -385,9 +386,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8122993157313012473, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: charLimit
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8122993157781444753, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_text
       value: text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157781444753, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122993157781444753, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8122993157781444767, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_Layer
@@ -735,7 +748,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2066293365 stripped
 RectTransform:

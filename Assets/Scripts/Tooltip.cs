@@ -70,8 +70,11 @@ public class Tooltip : MonoBehaviour
                     curCharLimit = word.Length;
                 }
 
-                // If adding word goes over char limit, finish line
-                if (word.Length + line.Length > curCharLimit) {
+                // If found line ending or adding word goes over char limit, finish line
+                if (word.Contains("\n") || word.Length + line.Length > curCharLimit) {
+                    if (word.Contains("\n")) {
+                        ttstring = ttstring.Substring(ttstring.IndexOf("\n") + 1);
+                    }
                     line += "\n";
                     doneLine = true;
                 } else {
