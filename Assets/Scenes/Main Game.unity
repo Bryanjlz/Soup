@@ -320,6 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2429e68bdf8efe40b6f1eb03bd1640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xdmp: 0
+  ydmp: 0
   CPText: {fileID: 409893979}
   PPText: {fileID: 1390147323}
   GoldText: {fileID: 1687552844}
@@ -331,16 +333,18 @@ MonoBehaviour:
   passivePower: 0
   passiveMultiplier: 1
   taxPercentage: 0.01
-  pGenTime: 2
+  pGenTime: 1
   pGenTimer: 0
   allSoups: []
   content: {fileID: 8711032257711144081}
   soupMenuPrefab: {fileID: 3477782160428888210, guid: 5a373e9b6f284d143b7fc8fd251200d5, type: 3}
   starPrefab: {fileID: 6383753958566600913, guid: cca56dbe654076d4ea5d1fc797fc9959, type: 3}
+  drunkness: 0
   ascension:
     ascensions: 0
     soupsSacrificed: 0
     ascensionBonus: 1
+  destroyOnAscend: []
 --- !u!4 &640533099
 Transform:
   m_ObjectHideFlags: 0

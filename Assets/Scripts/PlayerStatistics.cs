@@ -85,6 +85,8 @@ public class PlayerStatistics : MonoBehaviour
     
     public Ascension ascension;
 
+    public List<GameObject> destroyOnAscend;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +95,7 @@ public class PlayerStatistics : MonoBehaviour
             soups = new Dictionary<Soup, int>();
             rng = new System.Random();
             ascension = new Ascension();
+            destroyOnAscend = new List<GameObject>();
             LoadAllSoup();
         } else {
             Destroy(this.gameObject);
@@ -314,11 +317,19 @@ public class PlayerStatistics : MonoBehaviour
         AddSoup(allSoups[r], 1);
     }
 
+    public void GainRandomSoup(int rarityLock) {
+        int r = rng.Next(allSoups.Length);
+        while (allSoups[r].rarity >= rarityLock) {
+            r = rng.Next(allSoups.Length);
+        }
+        AddSoup(allSoups[r], 1);
+    }
+
     // Load all soup scriptable objs
     private void LoadAllSoup() {
         allSoups = Resources.LoadAll<Soup>("Soups");
 
-        AddSoup(allSoups[13]);
+        AddSoup(allSoups[23]);
 
         //Debug - seems to work for now
         /*
@@ -368,6 +379,11 @@ public class PlayerStatistics : MonoBehaviour
         foreach (Transform child in content.transform) {
             Destroy(child.gameObject);
         }
+
+        foreach (GameObject go in destroyOnAscend) {
+            Destroy(go);
+        }
+        destroyOnAscend = new List<GameObject>();
 
         AddSoup(allSoups[13]);
         

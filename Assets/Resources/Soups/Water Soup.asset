@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Water Soup
   m_EditorClassIdentifier: 
   soupName: Water Soup
-  description: 
+  description: Evade Taxes
   rarity: 4
   sprite: {fileID: 21300000, guid: 8270ea7ace4b0c749b4570b3affec28c, type: 3}
   clickAdditive: 0
   passiveAdditive: 0
   taxAmountAdditive: 0
-  clickMultiplicative: 0
-  passiveMultiplicative: 0
+  clickMultiplicative: 0.3
+  passiveMultiplicative: 0.3
   taxAmountMultiplicative: 0
-  associatedPrefab: {fileID: 0}
+  associatedPrefab: {fileID: 564517727619540136, guid: 9d12d707065495248bd5f62d18773080, type: 3}
