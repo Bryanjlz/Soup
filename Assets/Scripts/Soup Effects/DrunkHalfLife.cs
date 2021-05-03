@@ -16,6 +16,7 @@ public class DrunkHalfLife: MonoBehaviour {
 
     void Start() {
         PlayerStatistics.instance.drunkness += initialDrunk;
+        PlayerStatistics.instance.destroyOnAscend.Add(gameObject);
         //restoreTimer = Taxation.instance.TAX_TIMER;
         //Taxation.instance.TAX_TIMER = taxTimerOverride;
         //Taxation.instance.taxTimer = 0;

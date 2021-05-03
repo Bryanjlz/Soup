@@ -101,7 +101,7 @@ public class PlayerStatistics : MonoBehaviour
         if (drunkness < 0) {
             drunkness = 0;
         }
-
+        /*
         if (drunkness > 0) {
             speed = drunkness / 5f;
             if (speed > 10f) {
@@ -133,7 +133,7 @@ public class PlayerStatistics : MonoBehaviour
             yDest -= Math.Abs(ydmp);
             canvas.transform.position += new Vector3(xdmp, ydmp, 0);
         }
-        
+        */
     }
 
     // Update is called once per frame
@@ -405,6 +405,7 @@ public class PlayerStatistics : MonoBehaviour
     public void Ascend() {
         ascension.Ascend(ref soups);
         money = 0;
+        drunkness = 0;
         foreach (Transform child in content.transform) {
             Destroy(child.gameObject);
         }

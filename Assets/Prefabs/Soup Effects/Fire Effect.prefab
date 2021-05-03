@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6221533742041066597}
-  - component: {fileID: 4545521320706293131}
   - component: {fileID: 203340796582279559}
+  - component: {fileID: 4545521320706293131}
   m_Layer: 0
   m_Name: Fire Effect
   m_TagString: Untagged
@@ -32,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4545521320706293131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137791143685523481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c4df433f20fc741ba873f4662a9f66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  multiplier: 0.75
 --- !u!114 &203340796582279559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,3 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drunkMod: -10000
+  destroy: 0
+--- !u!114 &4545521320706293131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137791143685523481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c4df433f20fc741ba873f4662a9f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 0.75
