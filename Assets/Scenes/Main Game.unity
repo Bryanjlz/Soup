@@ -395,7 +395,7 @@ RectTransform:
   - {fileID: 1867568634}
   - {fileID: 779786871}
   m_Father: {fileID: 1222771515}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1365,7 +1365,7 @@ RectTransform:
   - {fileID: 859131324}
   - {fileID: 1552565161}
   m_Father: {fileID: 1222771515}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2794,7 +2794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8122993157313012230, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8122993157313012230, guid: 5166e3989dac13045a1aba7156267ca3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3208,12 +3208,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1761835805}
-  - {fileID: 435127545}
-  - {fileID: 809898330}
-  - {fileID: 122986608}
-  - {fileID: 893924826}
-  - {fileID: 2137228153}
   - {fileID: 2066293365}
+  - {fileID: 2137228153}
+  - {fileID: 893924826}
+  - {fileID: 435127545}
+  - {fileID: 122986608}
+  - {fileID: 809898330}
   m_Father: {fileID: 898066722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4615,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5793645553975478151, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5793645553975478151, guid: 1b1dfea442d911e458709c45d24391bc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4720,7 +4720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7058544731165483778, guid: ddd0b18a602d0c84cab0e6927f1b46fb, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058544731165483778, guid: ddd0b18a602d0c84cab0e6927f1b46fb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4910,7 +4910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8711032255980830697, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8711032255980830697, guid: d1154c273e3ed0a449a669db2b16d40b, type: 3}
       propertyPath: m_AnchorMax.x
